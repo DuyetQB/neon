@@ -22,7 +22,7 @@ app.use(express.static("public"));
 
 app.get("/", function (req, res) {
   // res.status(200).json({ message:"oki"})
-  res.sendFile(path.join(__dirname, "/public/home.html"));
+  res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 app.use("/api/login", LoginRouter);
 app.use("/api/register", RegisterRouter);
