@@ -69,7 +69,7 @@
             if (password.length <= 5) {
                 document.querySelector(".popup .popup-message").innerHTML = "Mật khẩu của bạn cần hơn 6 ký tự";
             }
-            let response = await fetch("/api/register", {
+            let response = await fetch(api + "/api/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
