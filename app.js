@@ -7,13 +7,24 @@ const path = require("path");
 const LoginRouter = require("./routes/Login");
 const RegisterRouter = require("./routes/Register");
 
+const url =
+  "mongodb+srv://dinhsyduyet:dinhsyduyet@cluster0.hy4q0.mongodb.net/neonDatabase?retryWrites=true&w=majority";
+
 mongooseClient
-  .connect("mongodb://localhost:27017/login-page", {
+  .connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("connect to db success "))
   .catch((err) => console.error(`connect db is fail which ${err}`));
+
+// mongooseClient
+//   .connect("mongodb://localhost:27017/login-page", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("connect to db success "))
+//   .catch((err) => console.error(`connect db is fail which ${err}`));
 app.use(logger("dev"));
 app.use(express.json());
 
