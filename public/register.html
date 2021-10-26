@@ -56,7 +56,7 @@
 
         let form = document.getElementById("form-submit");
         form.addEventListener("submit", handleSubmit);
-        let api = "https://neon-silk.vercel.app"
+        let api = "https://neon-site.herokuapp.com"
 
         async function handleSubmit(e) {
             e.preventDefault();
@@ -66,9 +66,7 @@
 
             let password = document.getElementById("password").value;
 
-            if (password.length <= 5) {
-                document.querySelector(".popup .popup-message").innerHTML = "Mật khẩu của bạn cần hơn 6 ký tự";
-            }
+
             let response = await fetch(api + "/api/register", {
                 method: "POST",
                 headers: {
