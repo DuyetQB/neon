@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta property="og:image"
+        content="https://cdn.dribbble.com/users/60166/screenshots/16729590/media/532fa7f1e866c83c358709b52542df56.jpg" />
+    <meta name="description" content="Login to experience our services">
+    <meta name="author" content="duyet oi">
+</head>
+
+<body>
+    <div class="box-wrapper">
+        <h2 class="box-title">Đăng Nhập </h2>
+        <form action="" id="form-submit">
+            <div class="form-group">
+                <input type="text" id="email" placeholder="Your email" class="input-item">
+                <p class="error error-email"></p>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Enter your password" class="input-item">
+                <div class="wrap-eye">
+                    <i class="far fa-eye-slash"></i>
+                    <i class="far fa-eye"></i>
+                </div>
+                <p class="error error-password"></p>
+            </div>
+
+            <div class="form-group form-submit ">
+                <input type="submit" value="Đăng Nhập " class="btn btn-submit">
+            </div>
+        </form>
+
+        <div class="form-group">
+            <span class="account-text">Bạn chưa có tài khoản ?</span>
+            <a href="/register.html">Đăng kí </a>
+        </div>
+    </div>
+    <div class="popup">
+        <p class="popup-message"></p>
+    </div>
+    <script>
+
+        let form = document.getElementById("form-submit");
+        form.addEventListener("submit", handleSubmit);
+        let api = "http://localhost:5000"
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+
+
+            let response = await fetch("/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+
+            }).then(res => res.json());
+
+
+
+            const responseText = function () {
+                return document.querySelector(".popup .popup-message").innerHTML = response.message;
+            }
+
+            if (response.status === "error") {
+
+                responseText();
+            }
+            if (response.status === "ok") {
+
+                responseText();
+            }
+            if (response.data) {
+                document.querySelector(".popup").classList.toggle("open-poup");
+                responseText();
+                const jwt_set_data = localStorage.setItem("jwt-key", response.data);
+
+                setTimeout(function () {
+                    document.querySelector(".popup").classList.toggle("open-poup");
+                    window.open("/");
+                }, 2000)
+            }
+
+            else {
+                document.querySelector(".popup").classList.toggle("open-poup");
+
+                setTimeout(function () {
+                    document.querySelector(".popup").classList.toggle("open-poup");
+                }, 3000)
+            }
+
+        }
+
+    </script>
+    <script type="text/javascript">
+        let $ = document.querySelector.bind(document);
+        document.addEventListener("DOMContentLoaded", function () {
+
+            $(".wrap-eye").onclick = function () {
+                const type = $("#password").getAttribute("type") === 'password' ? 'text' : 'password';
+                $(".wrap-eye").classList.toggle("open");
+
+                if ($(".wrap-eye").classList.contains(open)) {
+
+                    $("#password").setAttribute("type", type);
+
+                }
+                else {
+
+                    $("#password").setAttribute("type", type)
+                }
+            }
+        })
+    </script>
+    <script>
+
+        function randomImage() {
+
+            const image1 = 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+            const image2 = 'https://images.pexels.com/photos/1590511/pexels-photo-1590511.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+            const image3 = 'https://images.pexels.com/photos/2033997/pexels-photo-2033997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+            const image4 = 'https://images.pexels.com/photos/207088/pexels-photo-207088.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+            const image5 = 'https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+            const image6 = 'https://images.pexels.com/photos/531321/pexels-photo-531321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+            const image7 = 'https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+
+            const imageBackground = [image1, image2, image3, image4, image5, image6, image7];
+            const index = Math.floor(Math.random() * imageBackground.length);
+            const imageMain = imageBackground[index];
+
+            document.body.style.backgroundImage = `url(${imageMain})`;
+        }
+        window.onload = randomImage();
+    </script>
+</body>
+
+</html>
