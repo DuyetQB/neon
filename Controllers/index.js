@@ -19,7 +19,7 @@ const Login = async (req, res, next) => {
       });
     }
 
-    const userName = await User.findOne({ email });
+    const userName = await User.findOne({ username });
     console.log("username", userName.username);
     if (email == userName.username) {
       const token = jwt.sign({ id: user._id, email: user.email }, SECRET_KEY);

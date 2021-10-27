@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
 const mongooseClient = require("mongoose");
-const PORT = process.env.APP_API || 3000;
+
 const logger = require("morgan");
 const path = require("path");
 const LoginRouter = require("./routes/Login");
 const RegisterRouter = require("./routes/Register");
-
+require("dotenv").config();
+// const PORT = process.env.APP_API || 3000;
 const url =
   "mongodb+srv://dinhsyduyet:dinhsyduyet@cluster0.hy4q0.mongodb.net/neonDatabase?retryWrites=true&w=majority";
 
@@ -38,6 +39,6 @@ app.get("/", function (req, res) {
 app.use("/api/login", LoginRouter);
 app.use("/api/register", RegisterRouter);
 
-app.listen(PORT, () => {
-  console.log(`server is running on port ${PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`server is running on port ${process.env.PORT || 3000}`);
 });
