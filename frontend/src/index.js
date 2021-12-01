@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import theme from "./styles/theme";
+import theme from "styles/theme";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/globalStyles";
-import { ContextCart } from "store/context";
+
 import "languages/i18next";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap-utilities.css";
@@ -14,7 +14,6 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-
       <App />
     </ThemeProvider>
   </React.StrictMode>,
