@@ -1,0 +1,15 @@
+{
+    "welcome": {
+        "sign_up":"Create Account",
+        "sign_up_with":"Sign up with",
+        "sign_in":"Log In ",
+        "sign_in_with":"Sign in with",
+        "placeholder_name":"Full Name",
+        "placeholder_email":"Email Address",
+        "placeholder_password":"Password",
+        "already_account":"Already have an account?",
+        "haven't_account":"Don’t have an account?",
+        "or":"or"
+
+    }
+}

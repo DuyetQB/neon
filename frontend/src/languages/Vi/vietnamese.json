@@ -1,0 +1,14 @@
+{
+    "welcome": {
+        "sign_up":"Tạo Tài Khoản ",
+        "sign_up_with":"Đăng kí với",
+        "sign_in":"Đăng Nhập ",
+        "sign_in_with":"Đăng nhập với",
+        "placeholder_name":"Tên đầy đủ ",
+        "placeholder_email":"Địa chỉ Email ",
+        "placeholder_password":"Mật khẩu",
+        "already_account":"Bạn đã có tài khoản?",
+        "haven't_account":"Bạn chưa có tài khoản?",
+        "or":"Hoặc"
+    }
+}

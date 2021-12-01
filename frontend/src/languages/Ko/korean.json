@@ -1,0 +1,16 @@
+{
+    "welcome": {
+        "title": "에 오신 것을 환영합니다 ",
+        "intro": "시작하려면 ,편집 저장하고 새로고침.",
+        "sign_up":"가입하기 ",
+        "sign_up_with":"가입",
+        "sign_in":"로그인 ",
+        "sign_in_with":"으로 로그인",
+        "placeholder_name":"성명",
+        "placeholder_email":"이메일 주소",
+        "placeholder_password":"비밀번호",
+        "already_account":"이미 계정이 있습니까?",
+        "haven't_account":"계정이 없으신가요?",
+        "or":"또는"
+    }
+}
